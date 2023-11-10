@@ -39,13 +39,13 @@ def index():
 
 
 @app.get("/devices", status_code=status.HTTP_200_OK)
-def read_root():
+def get_devices():
     data = sp.devices()
     return data['devices']
 
 
 @app.post("/play")
-def read_item(response: Response, music_id: str | None = None, target: str | None = None):
+def play_track(response: Response, music_id: str | None = None, target: str | None = None):
     try:
         device_id = devices[target]
         track = f"spotify:track:{music_id}"
